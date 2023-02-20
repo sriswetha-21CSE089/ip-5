@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <style>
+            table{
+                border:1px solid black;  
+                margin: auto;
+            }
+          
+            h1{
+                text-align: center;
+                text-shadow:2px 2px 2px red;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <h1>form validation</h1>
+         
+        <table>
+            <tr>
+                <td> <label>user Id:</label> </td>
+                <td><input type="text" id="id" placeholder=" enter user id  "></td>
+            </tr>
+              <tr>
+                <td> <label>password:</label> </td>
+                <td><input onclick="user()" type="password" id="p"></td>
+            </tr>
+            <tr>
+                <td> <label>Name: </label> </td>
+                <td><input onclick="pass()" type="text" id="n"></td>
+            </tr>
+            <tr>
+                <td> <label>address:</label> </td>
+                <td><input onclick="names()" type="text" id="a" ></td>
+            </tr>
+             <tr>
+                <td> <label>country:</label> </td>
+                <td><select id="1" >
+                        <option > india</option>
+                         <option> Afganisthan</option>
+                    </select></td>
+            </tr>
+            <tr>
+                <td> <label>zip code:</label> </td>
+                <td><input type="text" id="z"></td>
+            </tr>
+            <tr>
+                <td> <label>email:</label> </td>
+                <td><input onclick="code()" type="text" id="e"></td>
+            </tr>
+            <tr>
+                <td> <label for="2">select male or female:</label> </td>
+                <td><input onclick="mail()" type="radio" id="a" name="2">male</td>
+                 <td><input onclick="mail()" type="radio" id="b" name="2">Female</td>
+            </tr>
+            <tr>
+                <td> <label for="1">language:</label> </td>
+                <td><input  type="checkbox"  name="1">English</td>
+                <td><input type="checkbox" id="e" name="1">Non English</td>
+            </tr>
+            <tr>
+                <td> <label> About:</label> </td>
+                <td><textarea rows="2" cols="7"></textarea></td>
+            </tr>
+            <tr>
+                <td><button onclick="sub()">submit</button></td>
+            </tr>
+        </table>
+     
+        <script>
+            function user()
+            {
+            var x=document.getElementById('id').value;
+            var a=x.length;
+            if(!(a>=5&&a<=7))
+            {
+                alert("invalid userid between 5 and 7");
+                document.getElementById('id').value = '';
+               return false;
+               
+            }
+            return true;
+           };
+             function pass()
+            {
+            var x=document.getElementById('p').value;
+            var a=x.length;
+            if(!(a>=7&&a<=12))
+            {
+                alert("invalid password enter between 7 to 12");
+                 document.getElementById('p').value = '';
+                   return false;
+            }
+              return true;
+           };
+           function names(inputtxt)
+           {
+               var str=document.getElementById('n').value;
+             var letters = /^[A-Za-z]+$/;
+             if(!(str.match(letters)))
+            {
+                alert("only alphabets");
+                  return false;
+            }
+             return true;
+           }
+         function mail()
+        {
+            var str=document.getElementById('e').value;
+            var text= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+            if(!(str.match(text)))
+            {
+                 alert('invalid email address');
+                  document.getElementById('e').value = '';
+                    return false;
+            }
+              return true;
+        };
+        function code()
+        {
+            
+            var x=document.getElementById('z').value;
+             var a=/[0-9 a-z A-Z]/g;
+             if(!(x.match(a)))
+            {
+                 alert('invalid zipcode');
+                 document.getElementById('z').value='';
+                   return false;
+            }
+              return true;
+        }
+         function add()
+        {
+            
+            var x=document.getElementById('a').value;
+             var a=/[0-9 a-z A-Z]/g;
+             if(!(x.match(a)))
+            {
+                 alert('invalid address');
+                 document.getElementById('a').value = '';
+                   return false;
+            }
+              return true;
+        };
+         function gen()
+        {
+            if(document.getElementById('a').checked)
+            {
+              return true;
+            }
+            else
+            {
+                alert("select gender");
+            }
+        };
+        function sub()
+        {
+            if(user()&&pass()&&names()&&add()&&code()&&mail()&&gen())
+            {
+                alert("thankyou");
+            }
+            else{
+               user();pass();names();add();code();email();gen();
+            }
+                gen();
+        };
+      
+        gen();
+            </script>
+    </body>         
+</html>
